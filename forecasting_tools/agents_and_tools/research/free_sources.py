@@ -478,7 +478,7 @@ def manifold_markets(query: str, max_results: int = 5) -> list[SourceItem]:
         return []
     response = _get(
         "https://api.manifold.markets/v0/search-markets",
-        params={"term": query, "limit": max_results, "sort": "relevance"},
+        params={"term": query, "limit": max_results, "sort": "most-popular"},
     )
     try:
         rows = response.json()

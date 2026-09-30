@@ -21,6 +21,7 @@ Here are the tools most likely to be useful to you:
 - 🎯 **Forecasting Bot:** General forecaster that integrates with the Metaculus FutureEval bot tournament and provides a number of utilities. You can forecast with a pre-existing bot or override the class to customize your own (without redoing all the aggregation/API code, etc)
 - 🔌 **Metaculus API Wrapper:** for interacting with questions and tournaments
 - 🤖 **In-House Metaculus Bots**: You can see all the bots that Metaculus is running on their site in `run_bots.py`
+- 🔍 **FreeSearcher:** Keyless research tool that plans queries with an LLM, gathers evidence from free sources (web search, news RSS, Wikipedia, prediction markets), and condenses it into a forecasting brief. Works with OpenRouter's free models — no API keys required beyond `OPENROUTER_API_KEY`. See [docs/free_searcher.md](docs/free_searcher.md)
 
 Here are some other features of the project (not all are documented yet):
 - **General LLM Wrapper:** A unified interface around litellm with retry logic, the Metaculus proxy, structured outputs, and cost tracking
