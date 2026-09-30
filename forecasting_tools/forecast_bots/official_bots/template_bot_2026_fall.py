@@ -4,6 +4,7 @@ import logging
 from datetime import datetime, timezone
 from typing import Literal
 
+from forecasting_tools.agents_and_tools.research.free_searcher import FreeSearcher
 from forecasting_tools.agents_and_tools.research.smart_searcher import SmartSearcher
 from forecasting_tools.ai_models.general_llm import GeneralLlm
 from forecasting_tools.data_models.binary_report import BinaryPrediction
@@ -147,6 +148,21 @@ class FallTemplateBot2026(ForecastBot):
                     use_advanced_filters=False,
                 )
                 research = await searcher.invoke(prompt)
+            elif researcher.startswith("free-searcher"):
+                # "free-searcher" or "free-searcher/<litellm model name>". No paid
+                # search API needed; see research/free_searcher.py.
+                model_name = researcher.removeprefix("free-searcher").lstrip("/")
+                searcher = FreeSearcher(
+                    llm=model_name or None,
+                    num_queries=3,
+                    sites_per_query=4,
+                )
+                research = await searcher.research(
+                    question_text=question.question_text,
+                    resolution_criteria=question.resolution_criteria or "",
+                    background=question.background_info or "",
+                    fine_print=question.fine_print or "",
+                )
             elif not researcher or researcher == "None" or researcher == "no_research":
                 research = ""
             else:

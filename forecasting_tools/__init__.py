@@ -25,6 +25,9 @@ from forecasting_tools.agents_and_tools.research.key_factors_researcher import (
 from forecasting_tools.agents_and_tools.research.key_factors_researcher import (
     ScoredKeyFactor as ScoredKeyFactor,
 )
+from forecasting_tools.agents_and_tools.research.free_searcher import (
+    FreeSearcher as FreeSearcher,
+)
 from forecasting_tools.agents_and_tools.research.smart_searcher import (
     SmartSearcher as SmartSearcher,
 )
